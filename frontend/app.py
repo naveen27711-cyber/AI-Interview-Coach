@@ -96,7 +96,7 @@ if st.session_state["started"] and not st.session_state["finished"]:
                     st.rerun()
 
                 else:
-                    st.error(f"Backend error: {res.status_code}")
+                    st.error(res.json().get("detail", "Something went wrong. Please try again."))
 
             except requests.exceptions.ConnectionError:
                 st.error("Backend connection failed.")
